@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-8 text-center">
+                <h1 class="mt-5 pb-5">Only Number</h1>
+                <h3 class="">Enter string, will filter out everything except numbers.</h3>
+                <h3 class="pb-5">It will also copy the output to your clipboard</h3>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-8">
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" id="input" placeholder="Insert Text . . ."
+                        aria-label="Insert Text" aria-describedby="button">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="button" onclick="process()">Process</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function process() {
+            var input = document.querySelector("#input")
+            var inputText = input.value;
+            var outputText = "";
+            for (i = 0; i < inputText.length; i++) {
+                console.log(inputText[i])
+                if (inputText[i] >= '0' && inputText[i] <= '9') {
+                    outputText += inputText[i];
+                }
+            }
+            input.value = outputText;
+            input.select();
+            input.setSelectionRange(0, 99999); /*For mobile devices*/
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+        }
+    </script>
+</body>
+
+</html>
